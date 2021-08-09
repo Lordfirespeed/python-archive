@@ -1,0 +1,3 @@
+msg = input('msg ')
+amount = input('amount ')
+print(msg * int(amount))

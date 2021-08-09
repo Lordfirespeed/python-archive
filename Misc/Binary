@@ -1,0 +1,3 @@
+number = int(input('To number: '))
+for x in range(number):
+    print(str(x) + ' bits; 2^' + str(x) + '; ' + str(2^^x))

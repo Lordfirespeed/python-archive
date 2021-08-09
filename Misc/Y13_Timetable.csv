@@ -1,0 +1,28 @@
+﻿Week 1,1Mon,1Tue,1Wed,1Thu,1Fri,2Mon,2Tue,2Wed,2Thu,2Fri
+AM,Registration,Registration,Registration,Registration,Registration,Registration,Registration,Registration,Registration,Registration
+,13,13,13,13,13,13,13,13,13,13
+,Mrs L Nightingale,Mrs L Nightingale,Mrs L Nightingale,Mrs L Nightingale,Mrs L Nightingale,Mrs L Nightingale,Mrs L Nightingale,Mrs L Nightingale,Mrs L Nightingale,Mrs L Nightingale
+1,Chemistry,Tutorial,Chemistry,Mathematics,Further Mathematics,Physics,Tutorial,Physics,Chemistry,Physics
+,46,13,46,12,34,39,13,39,46,39
+,Miss R Biggs,Mrs F Harvey,Miss R Biggs,Mr S Fairfield,Mr S McCrink,Mr P Groom,Mrs F Harvey,Mr P Groom,Miss R Biggs,Mr P Groom
+2,Chemistry,Physics,Chemistry,Mathematics,Further Mathematics,Private Study,Mathematics,Physics,Chemistry,Physics
+,46,39,46,12,34,Big School,23,39,46,39
+,Miss R Biggs,Mr P Groom,Miss R Biggs,Mr S Fairfield,Mr S McCrink,,Mr S Fairfield,Mr P Groom,Miss R Biggs,Mr P Groom
+3,Further Mathematics,Physics,Mathematics,Chemistry,Physics,Private Study,Mathematics,Chemistry,Mathematics,Private Study
+,5,39,23,39,39,Big School,23,46,32,Big School
+,Dr L Rackham,Mr P Groom,Mrs S Mahony,Miss R Biggs,Mr P Groom,,Mr S Fairfield,Miss R Biggs,Mrs S Mahony,
+4,Physics,Mathematics,Physics,Further Mathematics,Private Study,Chemistry,Further Mathematics,Private Study,Further Mathematics,Mathematics
+,39,22,39,34,Big School,46,46,Big School,22,24
+,Mr P Groom,Mrs S Mahony,Mr P Groom,Mr S McCrink,,Miss R Biggs,Dr L Rackham,,Dr L Rackham,Mr S Fairfield
+5,Physics,Mathematics,Games,Further Mathematics,Private Study,Chemistry,Further Mathematics,Games,Further Mathematics,Mathematics
+,39,22,GAMES FIELD,34,Big School,46,46,GAMES FIELD,22,24
+,Mr P Groom,Mrs S Mahony,Mr T Wilson,Mr S McCrink,,Miss R Biggs,Dr L Rackham,Mr T Wilson,Dr L Rackham,Mr S Fairfield
+PM,Registration,Registration,,Registration,Registration,Registration,Registration,,Registration,Registration
+,13,13,,13,13,13,13,,13,13
+,Mrs L Nightingale,Mrs F Harvey,,Mrs F Harvey,Mrs L Nightingale,Mrs L Nightingale,Mrs F Harvey,,Mrs F Harvey,Mrs L Nightingale
+6,,Chemistry,Games,Further Mathematics,,,,Games,Further Mathematics,General Studies
+,,42,GAMES FIELD,21,,,,GAMES FIELD,21,Levi Fox Hall
+,,Miss R Biggs,Mr T Wilson,Mrs S Mahony,,,,Mr T Wilson,Mrs S Mahony,Miss R Biggs
+7,,Chemistry,Games,Further Mathematics,,,Mathematics,Games,Further Mathematics,
+,,42,GAMES FIELD,21,,,16,GAMES FIELD,21,
+,,Miss R Biggs,Mr T Wilson,Mrs S Mahony,,,Mrs S Mahony,Mr T Wilson,Mrs S Mahon,

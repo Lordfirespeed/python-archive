@@ -1,0 +1,23 @@
+ALARM CHECK PROGRAM -
+    Door = USERINPUT('Door - Open or closed?')
+    Window = USERINPUT('Window - Open or closed?')
+    Alarm = USERINPUT('Alarm - True or False?')
+    Ring = False
+    IF Alarm is True AND (Window is 'Open' OR Door is 'Open') THEN
+        IF Window is 'Open' OR Door is 'Open' THEN
+            Ring = True
+        ENDIF
+    ENDIF
+    OUTPUT 'The alarm is ' + Ring
+
+LIVE ALARM PROGRAM -
+    Door = USERINPUT('Door - Open or closed?')
+    Window = USERINPUT('Window - Open or closed?')
+    Alarm = USERINPUT('Alarm - True or False?')
+    Ring = False
+    WHILE Ring is False THEN
+        IF Alarm is True AND (Window is 'Open' OR Door is 'Open') THEN
+            Ring = True
+        ENDIF
+    ENDWHILE
+    OUTPUT 'Arghhh! Alarm!'

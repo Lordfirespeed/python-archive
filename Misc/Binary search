@@ -1,0 +1,14 @@
+List = [1, 5, 6, 8, 10, 20, 21, 25, 32, 37, 39, 41]
+def binarysearch(List, Search):
+    if len(List) < 2 and List[0] == Search:
+        return True
+    elif len(List) < 2:
+        return False
+    Mid = int(len(List) / 2)
+    if List[Mid] > Search:
+        Var = binarysearch(List[:Mid], Search)
+    else:
+        Var = binarysearch(List[Mid:], Search)
+    return Var
+    
+print(str(binarysearch(List, 9)))

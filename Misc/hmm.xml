@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<report xsi:schemaLocation="http://www.callassoftware.com/namespace/pi4 pi4_results_schema.xsd" xmlns="http://www.callassoftware.com/namespace/pi4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <document>
+        <doc_info>
+            <filename>Non-text-searchable.pdf</filename>
+            <path>/home/debopam/Downloads/pdfToolBoxCLI/samples/</path>
+            <pdfversion>1.4</pdfversion>
+            <filesize_byte>70489</filesize_byte>
+            <title>Untitled</title>
+            <author>Dell</author>
+            <creator>PScript5.dll Version 5.2.2</creator>
+            <producer>GPL Ghostscript 8.15</producer>
+            <created>08.10.2013 13:21</created>
+            <created_timezone>2013-10-08T13:21:40</created_timezone>
+            <modified>08.10.2013 13:21</modified>
+            <modified_timezone>2013-10-08T13:21:40</modified_timezone>
+            <keywords></keywords>
+            <subject></subject>
+            <trapped>Unknown</trapped>
+            <plates>4</plates>
+            <platenames>
+                <platename>Cyan</platename>
+                <platename>Magenta</platename>
+                <platename>Yellow</platename>
+                <platename>Black</platename>
+            </platenames>
+            <catalog_info>
+                <version_entry></version_entry>
+            </catalog_info>
+        </doc_info>
+        <pages>
+        </pages>
+        <resources>
+        </resources>
+    </document>
+    <profile_info creator_id="Pb484eb8c0ff7c39aa54c4359af092373">
+        <profile_name>TestChecksColorResFont</profile_name>
+        <profile_comment></profile_comment>
+        <meta_data>
+        </meta_data>
+        <conditions>
+            <condition id="CND1" creator_id="Cedb27d6db073644e1a44173737e1acab" property_key="CSCOLOR::isDeviceRGB">
+                <display_name></display_name>
+                <display_comment></display_comment>
+                <rules>
+                    <rule id="RUL2">
+                    </rule>
+                </rules>
+            </condition>
+            <condition id="CND2" creator_id="Ca7fafdf48cebe54ed7ab5687c7988cac" property_key="CSIMAGE::BitsPerColourComponent">
+                <display_name></display_name>
+                <display_comment></display_comment>
+                <rules>
+                    <rule id="RUL1">
+                    </rule>
+                </rules>
+            </condition>
+            <condition id="CND3" creator_id="C1b82e4dcd74de31c222ca3ae9adbb7c2" property_key="CSIMAGE::Resolution">
+                <display_name></display_name>
+                <display_comment></display_comment>
+                <rules>
+                    <rule id="RUL1">
+                    </rule>
+                </rules>
+            </condition>
+            <condition id="CND4" creator_id="Ca463e359e2e0388210b50fc64e0b1dc7" property_key="CSIMAGE::BitsPerColourComponent">
+                <display_name></display_name>
+                <display_comment></display_comment>
+                <rules>
+                    <rule id="RUL3">
+                    </rule>
+                </rules>
+            </condition>
+            <condition id="CND5" creator_id="C91457a5352d354fb9f52f49e7d310845" property_key="CSIMAGE::Resolution">
+                <display_name></display_name>
+                <display_comment></display_comment>
+                <rules>
+                    <rule id="RUL3">
+                    </rule>
+                </rules>
+            </condition>
+            <condition id="CND6" creator_id="C0f6ff9d5de51924064d5e63877f70289" property_key="CSFONT::isEmbedded">
+                <display_name></display_name>
+                <display_comment></display_comment>
+                <rules>
+                    <rule id="RUL4">
+                    </rule>
+                </rules>
+            </condition>
+        </conditions>
+        <rules>
+            <rule id="RUL1" creator_id="Rd69191a9b161310be770bda424c2eb86" dict_key="PRCWzImag_ResImgLower">
+                <display_name>Resolution of color and grayscale images is lower than 300 pixels per inch</display_name>
+                <display_comment>Continuous tone image resolution lower than specified</display_comment>
+                <display_nomatch></display_nomatch>
+                <conditions>
+                    <condition id="CND2">
+                    </condition>
+                    <condition id="CND3">
+                    </condition>
+                </conditions>
+                <rulesets>
+                    <ruleset ruleset_id="RS2">
+                        <severity>Error</severity>
+                    </ruleset>
+                </rulesets>
+            </rule>
+            <rule id="RUL2" creator_id="R283b33331e53df09691597fbd56cd772" dict_key="PRCWzColr_RGB">
+                <display_name>Object uses RGB</display_name>
+                <display_comment>Object uses RGB (DeviceRGB).</display_comment>
+                <display_nomatch></display_nomatch>
+                <conditions>
+                    <condition id="CND1">
+                    </condition>
+                </conditions>
+                <rulesets>
+                    <ruleset ruleset_id="RS1">
+                        <severity>Error</severity>
+                    </ruleset>
+                </rulesets>
+            </rule>
+            <rule id="RUL3" creator_id="R1331df8c5867727243d9fd6ea8d6dda6" dict_key="PRCWzImag_ResBmpLower">
+                <display_name>Resolution of bitmap images is lower than 300 pixels per inch</display_name>
+                <display_comment>Bitmap resolution lower than specified</display_comment>
+                <display_nomatch></display_nomatch>
+                <conditions>
+                    <condition id="CND4">
+                    </condition>
+                    <condition id="CND5">
+                    </condition>
+                </conditions>
+                <rulesets>
+                    <ruleset ruleset_id="RS3">
+                        <severity>Error</severity>
+                    </ruleset>
+                </rulesets>
+            </rule>
+            <rule id="RUL4" creator_id="R04dd9c495da7506fdb7f46ecca066d81" dict_key="PRCWzXComp_PDFDocument_R_FontNotEmbedded">
+                <display_name>Font not embedded</display_name>
+                <display_comment>PDF/X requires that all fonts are embedded.</display_comment>
+                <display_nomatch></display_nomatch>
+                <conditions>
+                    <condition id="CND6">
+                    </condition>
+                </conditions>
+                <rulesets>
+                    <ruleset ruleset_id="RS4">
+                        <severity>Error</severity>
+                    </ruleset>
+                </rulesets>
+            </rule>
+        </rules>
+        <rulesets>
+            <ruleset id="RS1" creator_id="Sfdc5b80dba07ef2ecab005fcb1cae4cf" dict_key="PRCWzColr_RGB">
+                <display_name>Object uses RGB</display_name>
+                <display_comment>Object uses RGB (DeviceRGB).</display_comment>
+                <rules>
+                    <rule rule_id="RUL2"></rule>
+                </rules>
+            </ruleset>
+            <ruleset id="RS2" creator_id="Sbd92dd53d1720e63b74d679a9a18fb4a" dict_key="PRCWzImag_ResImgLower">
+                <display_name>Resolution of color and grayscale images is lower than 300 pixels per inch</display_name>
+                <display_comment>Continuous tone image resolution lower than specified</display_comment>
+                <rules>
+                    <rule rule_id="RUL1"></rule>
+                </rules>
+            </ruleset>
+            <ruleset id="RS3" creator_id="Sabac7ce3a018637df157249daadec742" dict_key="PRCWzImag_ResBmpLower">
+                <display_name>Resolution of bitmap images is lower than 300 pixels per inch</display_name>
+                <display_comment>Bitmap resolution lower than specified</display_comment>
+                <rules>
+                    <rule rule_id="RUL3"></rule>
+                </rules>
+            </ruleset>
+            <ruleset id="RS4" creator_id="S935eda6d17880d284838826a0447a757" dict_key="PRCWzFont_NotEmbedded">
+                <display_name>Font is not embedded</display_name>
+                <display_comment>Fonts should always be embedded for prepress files. Fonts must be embedded for PDF/X-1 and PDF/X-3 files.</display_comment>
+                <rules>
+                    <rule rule_id="RUL4"></rule>
+                </rules>
+            </ruleset>
+        </rulesets>
+    </profile_info>
+    <results>
+        <hits rule_id="RUL2" severity="Error">
+            <hit type="Image" llx="35.94" lly="55.74" urx="576.0598" ury="756.0">
+                <imagestate v_ppi="339.303" h_ppi="339.924"></imagestate>
+                <gstate miter_limit="10.0" stroke_adjustment="0" flatness_tolerance="1.0" smoothness_tolerance="0.0" overprint_mode="1" overprint_for_stroke="0" overprint_for_fill="0"></gstate>
+                <triggers>
+                    <trigger condition_id="CND1">is true</trigger>
+                </triggers>
+            </hit>
+        </hits>
+    </results>
+    <information>
+        <product_name>pdfToolbox</product_name>
+        <product_version>10.1 (490) x64</product_version>
+        <date_time>2019-02-12T16:43:10+05:30</date_time>
+        <username>debopam</username>
+        <computername>debopam-H81H3-M4</computername>
+        <operating_system>Ubuntu 16.04.4 LTS Linux x86_64 4.15.0-45-generic</operating_system>
+        <duration>00:00:01</duration>
+        <report_language>en</report_language>
+    </information>
+</report>
