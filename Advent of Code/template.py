@@ -1,4 +1,7 @@
 class Solution:
+    def __init__(self, inputLines):
+        self.inputLines = inputLines
+
     @staticmethod
     def foo():
         return "bar"
