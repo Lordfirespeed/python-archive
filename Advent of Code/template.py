@@ -8,7 +8,7 @@ class Solution:
 
 
 if __name__ == "__main__":
-    with open(r"[year]/Input/[year]day[day](test).txt") as inputFile:
+    with open(r"[year]\Input\[year]day[day](test).txt") as inputFile:
         inputLines = [line.strip() for line in inputFile.readlines()]
 
     solver = Solution(inputLines)
