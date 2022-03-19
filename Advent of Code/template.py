@@ -13,4 +13,4 @@ if __name__ == "__main__":
 
     solver = Solution(inputLines)
     result = solver.foo()
-    print(f"bar: {result}")
+    print(f"foo: {result}")
