@@ -1,0 +1,27 @@
+The next event in the competition is Slalom skiing. You need speed and agility if you want to be successful.
+
+In this event competitors need to ski through a set of gates marked by poles. At this competiton the slope is a stright downhill, with all gates perpendicular to the direction of the slope.
+
+There isn't much you can do about the length of the slope, other than going really fast, however, if you can find an optimal route across the gates, you might have a good chance at winning.
+
+You start at offset 0 and are provided with a list of offsets for the centre of each gate (an array of decimals). You also know the width of the gates (it's the same for all gates, given as a positive decimal). You have to account for the displacement between your starting position and the first gate, but not the last gate and the finish line.
+
+You have to find the minimum displacement you need to travel between the gates. Round the result to 4 decimal places.
+
+Here is an example: given this layout [10, -10, 10, -10, 10] and a gate width of 2, you know that the edges of the gates are:
+
+9 - 11
+-11 - -9
+9 - 11
+-11 - -9
+9 - 11
+
+So the best path you can take, starting at 0 is to:
+
+    pass the first gate at offset 9 (total displacement: 9)
+    pass the second gate at offset -9 (total displacement: 9 + 18 = 27)
+    pass the third gate at offset 9 (total displacement: 27 + 18 = 45)
+    pass the fourth gate at offset -9 (total displacement: 45 + 18 = 63)
+    pass the final gate at offset 9 (total displacement: 63 + 18 = 81)
+
+This results in a total displacement of 81. 
