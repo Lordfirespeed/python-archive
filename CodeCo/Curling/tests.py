@@ -2,7 +2,7 @@ from solution import Curling
 import unittest
 
 
-class CurlingTests(unittest.TestCase):
+class BriefCurlingTests(unittest.TestCase):
 
     def test1(self):
         solution = Curling()
@@ -12,24 +12,12 @@ class CurlingTests(unittest.TestCase):
         solution = Curling()
         self.assertEqual(solution.push_stones(1.5, 0, 1.8, 0.707), 4.74)
 
-    def test3(self):
-        solution = Curling()
-        self.assertEqual(solution.push_stones(1.5, 0, 1.8, -0.707), 4.74)
-
     def test4(self):
         solution = Curling()
         self.assertEqual(solution.push_stones(1.8, 0, 1.75, 0.5), -1)
 
-    def test5(self):
-        solution = Curling()
-        self.assertEqual(solution.push_stones(1.5, 0, 1.8, 0), 1)
 
-    def test6(self):
-        solution = Curling()
-        self.assertEqual(solution.push_stones(1.5, 0, 1.45, 0), 0)
-
-
-class ActualCurlingTests(unittest.TestCase):
+class MarkingCurlingTests(unittest.TestCase):
     def test1(self):
         solution = Curling()
         self.assertEqual(solution.push_stones(1.6, -0.6, 1.4, 1.8), 2.09)
@@ -80,11 +68,11 @@ class ActualCurlingTests(unittest.TestCase):
 
     def test13(self):
         solution = Curling()
-        self.assertEqual(solution.push_stones(1.35, 0, 1.9, -0.9), 3.25)
+        self.assertEqual(solution.push_stones(1.35, 0, 1.9, -0.9), 4.56)
 
     def test14(self):
         solution = Curling()
-        self.assertEqual(solution.push_stones(1.35, 0, 1.8, -0.4), 8.73)
+        self.assertEqual(solution.push_stones(1.35, 0, 1.8, -0.4), 4.66)
 
     def test15(self):
         solution = Curling()
@@ -92,11 +80,11 @@ class ActualCurlingTests(unittest.TestCase):
 
     def test16(self):
         solution = Curling()
-        self.assertEqual(solution.push_stones(1.5, -0.5, 2, 0.3), 6.09)
+        self.assertEqual(solution.push_stones(1.5, -0.5, 2, 0.3), -1)
 
     def test17(self):
         solution = Curling()
-        self.assertEqual(solution.push_stones(1.5, 0, 1.8, 0.2), 6.91)
+        self.assertEqual(solution.push_stones(1.5, 0, 1.8, 0.2), 1.72)
 
     def test18(self):
         solution = Curling()
@@ -116,11 +104,11 @@ class ActualCurlingTests(unittest.TestCase):
 
     def test22(self):
         solution = Curling()
-        self.assertEqual(solution.push_stones(1.525, 0, 1.525, 0.6), 1.08)
+        self.assertEqual(solution.push_stones(1.525, 0, 1.525, 0.6), 0.98)
 
     def test23(self):
         solution = Curling()
-        self.assertEqual(solution.push_stones(1.54, 0.9, 1.59, 0.6), 1.25)
+        self.assertEqual(solution.push_stones(1.54, 0.9, 1.59, 0.6), 0.05)
 
 
 class MyCurlingTests(unittest.TestCase):

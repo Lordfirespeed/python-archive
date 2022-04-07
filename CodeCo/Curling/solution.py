@@ -9,6 +9,9 @@ class Stone:
         self.x_position = 0
         self.y_position = initial_y
 
+    def __repr__(self):
+        return f"<Stone{{x:{self.x_position}, y:{self.y_position}}}>"
+
     def do_push(self, v: float, angle_to_x_axis: float = 0):
         if v == 0:
             return
@@ -36,6 +39,9 @@ class Curling:
 
         self.first_stone_v = None
         self.second_stone_v = None
+
+    def __repr__(self):
+        return f"<Curling>"
 
     def push_first_stone(self):
         self.first_stone.do_push(self.first_stone_v)
@@ -77,44 +83,25 @@ class Curling:
         velocity_of_second_stone_at_collision = self.get_second_stone_v_from_x_during_first_push()
 
         first_stone_velocity_magnitude = abs(cos(first_stone_velocity_angle)) * velocity_of_second_stone_at_collision
-        second_stone_velocity_magnitude = abs(sin(second_stone_velocity_angle)) * velocity_of_second_stone_at_collision
+        second_stone_velocity_magnitude = abs(sin(first_stone_velocity_angle)) * velocity_of_second_stone_at_collision
 
         self.first_stone.do_push(first_stone_velocity_magnitude, first_stone_velocity_angle)
         self.second_stone.do_push(second_stone_velocity_magnitude, second_stone_velocity_angle)
 
     def push_stones(self, v1, y1, v2, y2):
-        a_stone_is_invalid = False
-
-        if type(y1) != float and type(y1) != int:
-            a_stone_is_invalid = True
-            y1 = None
-
-        if type(y2) != float and type(y2) != int:
-            a_stone_is_invalid = True
-            y2 = None
-
         self.first_stone = Stone(y1)
         self.second_stone = Stone(y2)
 
         self.first_stone_v = v1
         self.second_stone_v = v2
 
-        if (type(v1) != float and type(v1) != int) or v1 < 0:
-            self.first_stone.x_position = None
-            a_stone_is_invalid = True
-        else:
-            self.push_first_stone()
-
-        if (type(v2) != float and type(v2) != int) or v2 < 0:
-            self.second_stone.x_position = None
-            a_stone_is_invalid = True
-        else:
-            self.push_second_stone()
+        self.push_first_stone()
+        self.push_second_stone()
 
         print(self.first_stone.x_position, self.first_stone.y_position)
         print(self.second_stone.x_position, self.second_stone.y_position)
 
-        if (not a_stone_is_invalid) and self.check_stones_collided():
+        if self.check_stones_collided():
             self.do_collision_pushes()
 
         print(self.first_stone.x_position, self.first_stone.y_position)
