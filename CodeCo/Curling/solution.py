@@ -98,19 +98,11 @@ class Curling:
         self.push_first_stone()
         self.push_second_stone()
 
-        print(self.first_stone.x_position, self.first_stone.y_position)
-        print(self.second_stone.x_position, self.second_stone.y_position)
-
         if self.check_stones_collided():
             self.do_collision_pushes()
 
-        print(self.first_stone.x_position, self.first_stone.y_position)
-        print(self.second_stone.x_position, self.second_stone.y_position)
-
         first_stone_distance = self.get_stone_distance_to_target(self.first_stone)
         second_stone_distance = self.get_stone_distance_to_target(self.second_stone)
-
-        print(first_stone_distance, second_stone_distance)
 
         if first_stone_distance is None and second_stone_distance is None:
             return -1
