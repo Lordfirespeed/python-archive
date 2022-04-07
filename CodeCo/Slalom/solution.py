@@ -6,15 +6,15 @@ class Slalom:
 
     @staticmethod
     def round_value_to_4dp(value):
-        return round(value * 10000)/10000
+        return round(value, 4)
 
-    def get_closest_side_of_gate(self, skiierOffset, gateOffset):
-        if abs(skiierOffset - gateOffset) <= self.halfWidth:
+    def get_closest_side_of_gate(self, skiierOffset, gateCentreOffset):
+        if abs(skiierOffset - gateCentreOffset) <= self.halfWidth:
             return skiierOffset
-        elif skiierOffset < gateOffset:
-            return gateOffset - self.halfWidth
+        elif skiierOffset < gateCentreOffset:
+            return gateCentreOffset - self.halfWidth
         else:
-            return gateOffset + self.halfWidth
+            return gateCentreOffset + self.halfWidth
 
     def find_lowest_displacement_through_gates(self):
         skiierOffset = 0
