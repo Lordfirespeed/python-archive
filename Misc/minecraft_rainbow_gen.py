@@ -34,7 +34,19 @@ class rainbow_generator:
 
 
 if __name__ == "__main__":
-    n_pattern = rainbow_generator.generate_pattern(7)
+    height = 6
+
+    n_pattern = rainbow_generator.generate_pattern(height)
+    patternLength = len(n_pattern[0])
+    maxLineIndexLength = len(str(len(n_pattern) - 1))
+
+    denominator = 2 ** (height - 1)
+    fractionStrings = [str(Fraction(numerator, denominator)) for numerator in range(0, denominator)]
+    maxFractionStringLength = max(*[len(fractionString) for fractionString in fractionStrings], 3)
+
+    print("Output rows represents adjacent columns of blocks above beacon beams.\nG = Glass, A = Glass Colour A, B = Glass Colour B")
+    print(f"{'BFA':>{maxFractionStringLength}} {'I':>{maxLineIndexLength}}: {'Pattern':^{patternLength}}")
+
     for line_index, line in enumerate(n_pattern):
-        print(f"{line_index}: {''.join(line)}")
+        print(f"{fractionStrings[line_index]:>{maxFractionStringLength}} {line_index:>{maxLineIndexLength}}: {''.join(line)}")
 
