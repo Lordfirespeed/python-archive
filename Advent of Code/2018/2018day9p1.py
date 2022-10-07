@@ -1,4 +1,4 @@
-inputdata = [471, 72026 * 100]  # puzzle input is 471 (players), 72026 (total marbles)
+inputdata = [4, 192]  # puzzle input is 471 (players), 72026 (last marble's worth)
 
 totalmarbles = inputdata[1]
 players = inputdata[0]
@@ -28,7 +28,7 @@ while nextmarbleno < totalmarbles:
             playerscores[player] += marblecircle[removemarbleindex]
             del marblecircle[removemarbleindex]
             currentmarbleindex = removemarbleindex
-        # print(player, marblecircle)
+        print(player, marblecircle)
         nextmarbleno += 1
         if nextmarbleno % 10000 == 0:
             print(nextmarbleno, "/", totalmarbles)
