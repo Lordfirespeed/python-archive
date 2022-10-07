@@ -1,25 +1,38 @@
 from datetime import datetime, date, time, timedelta
+from functools import cache
 
 
 class DeliveryDates:
     working_days_only_mapping = {"True": True, "False": False}
     what_to_return_when_invalid = "Invalid Data"
     bank_holidays = (
+        date(year=1900, month=1, day=1),
         date(year=1900, month=12, day=25),
-        date(year=1900, month=12, day=26),
-        date(year=1900, month=1, day=1)
-    )
+        date(year=1900, month=12, day=26)
+    )  # needs to be sorted chronologically
 
     @staticmethod
     def _is_weekend(test_date: date) -> bool:
         return test_date.weekday() >= 5
 
     @classmethod
+    @cache
+    def _bank_holidays_near(cls, year: int) -> [date]:
+        expected_bank_holidays = []
+        for year in range(year-1, year+2):
+            for bank_holiday in cls.bank_holidays:
+                expected_bank_holidays.append(date(year=year, month=bank_holiday.month, day=bank_holiday.day))
+
+        actual_bank_holidays = []
+        for bank_holiday in expected_bank_holidays:
+            while cls._is_weekend(bank_holiday) or bank_holiday in actual_bank_holidays:
+                bank_holiday += timedelta(days=1)
+            actual_bank_holidays.append(bank_holiday)
+        return actual_bank_holidays
+
+    @classmethod
     def _is_bank_holiday(cls, test_date: date) -> bool:
-        for bank_holiday in cls.bank_holidays:
-            if test_date.day == bank_holiday.day and test_date.month == bank_holiday.month:
-                return True
-        return False
+        return test_date in cls._bank_holidays_near(test_date.year)
 
     @classmethod
     def _is_working_day(cls, test_date: date, working_days_only: bool) -> bool:
