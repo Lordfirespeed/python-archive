@@ -26,4 +26,6 @@ class TreasureHunter:
         return self.numeral_values[numeral]
 
     def parse_roman_numerals(self, numerals: str) -> int:
+        if len(numerals) == 0:
+            return 0
         return sum(self.numeral_value(token) for token in self.tokenize_roman_numerals(numerals))
