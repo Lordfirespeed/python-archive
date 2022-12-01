@@ -1,15 +1,19 @@
 class Solution:
-    def __init__(self, inputLines):
-        self.inputLines = inputLines
+    def __init__(self, elves: [[int]]) -> None:
+        self.elves = elves
 
-    def foo(self):
-        return len(self.inputLines)
+    def most_calorific(self) -> int:
+        calorie_totals = map(sum, self.elves)
+        return max(calorie_totals)
 
 
 if __name__ == "__main__":
     with open(r"input.txt") as inputFile:
-        inputLines = [line.strip() for line in inputFile.readlines()]
+        elves = inputFile.read().split("\n\n")
 
-    solver = Solution(inputLines)
-    result = solver.foo()
-    print(f"foo: {result}")
+    elves = map(lambda x: x.split("\n"), elves)
+    elves = [list(map(int, elf)) for elf in elves]
+
+    solver = Solution(elves)
+    result = solver.most_calorific()
+    print(f"Most calorific elf is carrying {result} calories")
