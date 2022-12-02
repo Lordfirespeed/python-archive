@@ -1,15 +1,15 @@
 class Solution:
-    def __init__(self, inputLines):
-        self.inputLines = inputLines
+    def __init__(self, input_lines):
+        self.input_lines = input_lines
 
     def foo(self):
-        return len(self.inputLines)
+        return len(self.input_lines)
 
 
 if __name__ == "__main__":
-    with open(r"input.txt") as inputFile:
-        inputLines = [line.strip() for line in inputFile.readlines()]
+    with open(r"input.txt") as input_file:
+        input_lines = [line.strip() for line in input_file.readlines()]
 
-    solver = Solution(inputLines)
+    solver = Solution(input_lines)
     result = solver.foo()
     print(f"foo: {result}")
