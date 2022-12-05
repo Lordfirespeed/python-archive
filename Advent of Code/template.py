@@ -1,8 +1,8 @@
 class Solution:
-    def __init__(self, input_lines):
+    def __init__(self, input_lines: [str]) -> None:
         self.input_lines = input_lines
 
-    def foo(self):
+    def foo(self) -> int:
         return len(self.input_lines)
 
 
