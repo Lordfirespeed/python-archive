@@ -74,5 +74,11 @@ class Vector2:
         # https://stackoverflow.com/a/5929567/11045433
         return (self.x * 73856093) ^ (self.y * 83492791)
 
+    def __copy__(self) -> Self:
+        return self.__class__(self.x, self.y)
+
+    def as_tuple(self) -> tuple[Number, Number]:
+        return self.x, self.y
+
     def __repr__(self) -> str:
         return f"({self.x}, {self.y})"
