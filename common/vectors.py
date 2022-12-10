@@ -25,6 +25,7 @@ class Vector2:
         if isinstance(other, Vector2):
             self.x += other.x
             self.y += other.y
+            return
         raise TypeError
 
     def __sub__(self, other) -> Self:
@@ -36,6 +37,7 @@ class Vector2:
         if isinstance(other, Vector2):
             self.x -= other.x
             self.y -= other.y
+            return
         raise TypeError
 
     @overload
@@ -52,20 +54,20 @@ class Vector2:
         raise TypeError
 
     @overload
-    def __imul__(self, other: Self) -> None:
-        ...
+    def __imul__(self, other: Self) -> None: ...
 
     @overload
-    def __imul__(self, other: Number) -> None:
-        ...
+    def __imul__(self, other: Number) -> None: ...
 
     def __imul__(self, other: Self | Number) -> None:
         if isinstance(other, Vector2):
             self.x *= other.x
             self.y *= other.y
+            return
         if isinstance(other, Number):
             self.x *= other
             self.y *= other
+            return
         raise TypeError
 
     def __hash__(self) -> int:
