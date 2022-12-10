@@ -68,5 +68,9 @@ class Vector2:
             self.y *= other
         raise TypeError
 
+    def __hash__(self) -> int:
+        # https://stackoverflow.com/a/5929567/11045433
+        return (self.x * 73856093) ^ (self.y * 83492791)
+
     def __repr__(self) -> str:
         return f"({self.x}, {self.y})"
