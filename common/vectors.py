@@ -70,9 +70,9 @@ class Vector2:
             return self
         raise TypeError
 
-    def __hash__(self) -> int:
-        # https://stackoverflow.com/a/5929567/11045433
-        return (self.x * 73856093) ^ (self.y * 83492791)
+    # def __hash__(self) -> int:
+    #     # https://stackoverflow.com/a/5929567/11045433
+    #     return (self.x * 73856093) ^ (self.y * 83492791)
 
     def __copy__(self) -> Self:
         return self.__class__(self.x, self.y)
