@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <title>CatDV Server Resolve Plugin</title>
+</head>
+<body>
+
+<form>
+    <label for="filepath">Filepath:</label>
+    <input type="text" id="filepath" name="filepath"><br>
+</form>
+
+<button type="button" id="add_to_media_pool" name="add_to_media_pool">Add to Resolve Media Pool</button>
+
+<script>
+    const button = document.getElementById("add_to_media_pool")
+
+    button.addEventListener("click", () => {
+        let xmlhttp = new XMLHttpRequest()
+        const filepath_entry_text = document.getElementById("filepath").value
+        let xmlclip = "<Clip><Path>".concat(filepath_entry_text, "</Path></Clip>")
+
+        xmlhttp.open("POST", "http://127.0.0.1:8089/import")
+
+        xmlhttp.withCredentials = true
+        xmlhttp.setRequestHeader("Content-Type", "text/xml")
+
+        xmlhttp.send(xmlclip)
+    })
+</script>
+
+</body>
+</html>
