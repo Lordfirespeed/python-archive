@@ -1,4 +1,4 @@
-with open("../CodeCo/Curling/testcases.txt") as testcasesfile:
+with open("../ShowCode/CodeCo/Curling/testcases.txt") as testcasesfile:
     testString = """    def test%s(self):
         solution = Curling()
         self.assertEqual(solution.push_stones("""
