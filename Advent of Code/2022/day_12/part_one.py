@@ -37,6 +37,8 @@ class MountainRange:
         Vector2(0, -1)
     ]
 
+    peak_class = MountainPeak
+
     def __init__(self, mountain_string: str) -> None:
         self.start_peak: MountainPeak = None
         self.end_peak: MountainPeak = None
@@ -72,14 +74,14 @@ class MountainRange:
 
     def make_peak(self, position: Vector2, character: str) -> MountainPeak:
         if character == self.start_symbol:
-            node = MountainPeak(position, self.start_elevation)
+            node = self.peak_class(position, self.start_elevation)
             self.start_peak = node
             return node
         if character == self.end_symbol:
-            node = MountainPeak(position, self.end_elevation)
+            node = self.peak_class(position, self.end_elevation)
             self.end_peak = node
             return node
-        return MountainPeak.from_symbol(position, character)
+        return self.peak_class.from_symbol(position, character)
 
     def adjacent_peaks(self, peak: MountainPeak) -> [MountainPeak]:
         assert self[peak.position] is peak
