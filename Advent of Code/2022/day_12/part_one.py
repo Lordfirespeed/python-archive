@@ -67,10 +67,10 @@ class MountainRange:
 
     def fill_grid(self, mountain_string: str):
         for y, line in enumerate(mountain_string.split("\n")):
-            node_row = [self.make_node(Vector2(x, y), character) for x, character in enumerate(line.strip())]
+            node_row = [self.make_peak(Vector2(x, y), character) for x, character in enumerate(line.strip())]
             self.grid.append(node_row)
 
-    def make_node(self, position: Vector2, character: str) -> MountainPeak:
+    def make_peak(self, position: Vector2, character: str) -> MountainPeak:
         if character == self.start_symbol:
             node = MountainPeak(position, self.start_elevation)
             self.start_peak = node
