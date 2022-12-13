@@ -2,7 +2,11 @@ Huge = None
 NegativeHuge = None
 
 
-class _Huge:
+class _ArbitrarilyLarge:
+    pass
+
+
+class _Huge(_ArbitrarilyLarge):
     def __ge__(self, other: int | float) -> bool:
         return self > other
 
@@ -30,10 +34,18 @@ class _Huge:
     def __add__(self, other):
         return self
 
+    def __radd__(self, other):
+        return self
+
     def __sub__(self, other):
-        if isinstance(other, _Huge):
+        if isinstance(other, _ArbitrarilyLarge):
             raise NotImplementedError
         return self
+
+    def __rsub__(self, other):
+        if isinstance(other, _ArbitrarilyLarge):
+            raise NotImplementedError
+        return NegativeHuge
 
     def __pos__(self):
         return self
@@ -48,7 +60,7 @@ class _Huge:
         return repr(self)
 
 
-class _NegativeHuge:
+class _NegativeHuge(_ArbitrarilyLarge):
     def __ge__(self, other: int | float) -> bool:
         return self > other
 
@@ -74,12 +86,20 @@ class _NegativeHuge:
         raise TypeError
 
     def __add__(self, other):
-        if isinstance(other, _Huge):
+        if isinstance(other, _ArbitrarilyLarge):
             raise NotImplementedError
+        return self
+
+    def __radd__(self, other):
         return self
 
     def __sub__(self, other):
         return self
+
+    def __rsub__(self, other):
+        if isinstance(other, _ArbitrarilyLarge):
+            raise NotImplementedError
+        return Huge
 
     def __pos__(self):
         return NegativeHuge
