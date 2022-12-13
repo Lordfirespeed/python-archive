@@ -74,6 +74,11 @@ class Vector2:
     #     # https://stackoverflow.com/a/5929567/11045433
     #     return (self.x * 73856093) ^ (self.y * 83492791)
 
+    def __eq__(self, other) -> bool:
+        if isinstance(other, Vector2):
+            return self.x == other.x and self.y == other.y
+        raise TypeError
+
     def __copy__(self) -> Self:
         return self.__class__(self.x, self.y)
 
