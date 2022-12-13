@@ -11,6 +11,12 @@ class _Huge(_ArbitrarilyLarge):
         return self > other
 
     def __gt__(self, other: int | float) -> bool:
+        if isinstance(other, _Huge):
+            raise TypeError("Can't compare arbitrarily positive values.")
+
+        if isinstance(other, _NegativeHuge):
+            return True
+
         if isinstance(other, int):
             return True
 
@@ -23,6 +29,12 @@ class _Huge(_ArbitrarilyLarge):
         return self < other
 
     def __lt__(self, other: int | float) -> bool:
+        if isinstance(other, _Huge):
+            raise TypeError("Can't compare arbitrarily positive values.")
+
+        if isinstance(other, _NegativeHuge):
+            return False
+
         if isinstance(other, int):
             return False
 
@@ -65,6 +77,12 @@ class _NegativeHuge(_ArbitrarilyLarge):
         return self > other
 
     def __gt__(self, other: int | float) -> bool:
+        if isinstance(other, _Huge):
+            return False
+
+        if isinstance(other, _NegativeHuge):
+            raise TypeError("Can't compare arbitrarily negative values.")
+
         if isinstance(other, int):
             return False
 
@@ -77,6 +95,12 @@ class _NegativeHuge(_ArbitrarilyLarge):
         return self < other
 
     def __lt__(self, other: int | float) -> bool:
+        if isinstance(other, _Huge):
+            return True
+
+        if isinstance(other, _NegativeHuge):
+            raise TypeError("Can't compare arbitrarily negative values.")
+
         if isinstance(other, int):
             return True
 
