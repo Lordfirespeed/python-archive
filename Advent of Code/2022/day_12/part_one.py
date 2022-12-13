@@ -192,7 +192,12 @@ class MountainPathfinder:
         self.nodes_already_considered.append(best_node)
 
     def pathfind_until_first_solution(self):
-        while self.grid.end_peak not in self.nodes_already_considered:
+        while True:
+            try:
+                self.end_node()
+                break
+            except ValueError:
+                pass
             self.pathfinding_step()
 
     def pathfind_until_exhausted_solutions(self):
