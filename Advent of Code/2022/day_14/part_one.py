@@ -84,12 +84,15 @@ class Cave:
 
 
 class Solution:
+    cave_class = Cave
     sand_source = Vector2(500, 0)
     sand_fall_deltas = (Vector2(0, 1), Vector2(-1, 1), Vector2(1, 1))
+    void_offset = 0
 
     def __init__(self, input_lines: [str]) -> None:
-        self.cave = Cave(input_lines)
+        self.cave = self.cave_class(input_lines)
         self.number_sand_at_rest = 0
+        self.void_from_y = self.cave.maximum_height_wall + self.void_offset
 
     def spawn_sand(self) -> None:
         current_sand_position = copy(self.sand_source)
@@ -104,7 +107,7 @@ class Solution:
                 break
             else:
                 break
-            if current_sand_position.y > self.cave.maximum_height_wall:
+            if current_sand_position.y > self.void_from_y:
                 raise SandInVoid
         self.number_sand_at_rest += 1
         self.cave[current_sand_position] = TileState.Sand
