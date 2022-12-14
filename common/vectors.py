@@ -77,7 +77,7 @@ class Vector2:
     def __eq__(self, other) -> bool:
         if isinstance(other, Vector2):
             return self.x == other.x and self.y == other.y
-        raise TypeError
+        return False
 
     def __copy__(self) -> Self:
         return self.__class__(self.x, self.y)
