@@ -18,7 +18,7 @@ class Vector2:
 
     @property
     def manhattan(self):
-        return self.x + self.y
+        return abs(self.x) + abs(self.y)
 
     def __add__(self, other: Self) -> Self:
         if isinstance(other, Vector2):
