@@ -25,23 +25,9 @@ class Vector2:
             return Vector2(self.x + other.x, self.y + other.y)
         raise TypeError
 
-    def __iadd__(self, other) -> Self:
-        if isinstance(other, Vector2):
-            self.x += other.x
-            self.y += other.y
-            return self
-        raise TypeError
-
     def __sub__(self, other) -> Self:
         if isinstance(other, Vector2):
             return Vector2(self.x - other.x, self.y - other.y)
-        raise TypeError
-
-    def __isub__(self, other) -> Self:
-        if isinstance(other, Vector2):
-            self.x -= other.x
-            self.y -= other.y
-            return self
         raise TypeError
 
     @overload
@@ -57,26 +43,9 @@ class Vector2:
             return Vector2(self.x * other, self.y * other)
         raise TypeError
 
-    @overload
-    def __imul__(self, other: Self) -> Self: ...
-
-    @overload
-    def __imul__(self, other: Number) -> Self: ...
-
-    def __imul__(self, other: Self | Number) -> Self:
-        if isinstance(other, Vector2):
-            self.x *= other.x
-            self.y *= other.y
-            return self
-        if isinstance(other, Number):
-            self.x *= other
-            self.y *= other
-            return self
-        raise TypeError
-
-    # def __hash__(self) -> int:
-    #     # https://stackoverflow.com/a/5929567/11045433
-    #     return (self.x * 73856093) ^ (self.y * 83492791)
+    def __hash__(self) -> int:
+        # https://stackoverflow.com/a/5929567/11045433
+        return (self.x * 73856093) ^ (self.y * 83492791)
 
     def __eq__(self, other) -> bool:
         if isinstance(other, Vector2):
