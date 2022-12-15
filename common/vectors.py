@@ -16,6 +16,10 @@ class Vector2:
     def __abs__(self) -> float:
         return sqrt(self.x**2 + self.y**2)
 
+    @property
+    def manhattan(self):
+        return self.x + self.y
+
     def __add__(self, other: Self) -> Self:
         if isinstance(other, Vector2):
             return Vector2(self.x + other.x, self.y + other.y)
