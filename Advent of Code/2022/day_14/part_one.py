@@ -16,7 +16,7 @@ class SandInVoid(Exception):
 
 
 class Cave:
-    def __init__(self, wall_strings: [str]):
+    def __init__(self, wall_strings: [str]) -> None:
         self.tiles: defaultdict[int, dict[int, TileState]] = defaultdict(dict)
         self.generate_walls(wall_strings)
         self.maximum_height_wall = max(self.tiles.keys())
