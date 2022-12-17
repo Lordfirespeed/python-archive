@@ -132,6 +132,9 @@ class Span(SpanAbc):
 
         raise TypeError
 
+    def count(self) -> Number:
+        return self.stop - self.start
+
 
 class SpanCollection:
     __slots__ = [
@@ -151,8 +154,9 @@ class SpanCollection:
 
         while current_index < len(self._spans) - 1:
             if self._spans[current_index].stop >= self._spans[current_index + 1].start:
-                start = self._spans.pop(current_index).start
-                stop = self._spans[current_index].stop
+                old = self._spans.pop(current_index)
+                start = old.start
+                stop = max(old.stop, self._spans[current_index].stop)
                 self._spans[current_index] = Span(start, stop)
             else:
                 current_index += 1
@@ -209,6 +213,13 @@ class SpanCollection:
         except AssertionError:
             pass
 
+    def count(self) -> Number:
+        return sum(span.count() for span in self._spans)
+
+    @property
+    def has_discontinuities(self):
+        return len(self._spans) > 1
+
     def __iadd__(self, other: SpanAbc) -> Self:
         if isinstance(other, EmptySpan):
             return self
@@ -238,12 +249,10 @@ class SpanCollection:
                     return self
 
             current_index = gap_index
-            while other.stop > self._spans[current_index].stop:
-                if current_index < len(self._spans):
-                    self._spans.pop(current_index)
-                else:
-                    break
-            else:
+            while current_index < len(self._spans) and other.stop > self._spans[current_index].stop:
+                self._spans.pop(current_index)
+
+            if current_index < len(self._spans):
                 current = self._spans[current_index]
                 current = Span(other.stop, current.stop)
                 self._spans[current_index] = current
