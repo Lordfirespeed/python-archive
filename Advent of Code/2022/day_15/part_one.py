@@ -1,4 +1,5 @@
 from common.vectors import Vector2
+from common.spans import Span, SpanCollection
 import re
 from dataclasses import dataclass, field
 from typing import ClassVar, Self
@@ -28,12 +29,12 @@ class Sensor:
         closest_beacon_position = Vector2(int(groups[2]), int(groups[3]))
         return cls(position, closest_beacon_position)
 
-    def span_at_y(self, y: int) -> range:
+    def span_at_y(self, y: int) -> Span:
         y_difference = abs(self.position.y - y)
         if y_difference > self.radius:
             raise ValueError("Sensor has no span at provided y value")
         span_radius = (self.radius - y_difference)
-        return range(self.position.x - span_radius, self.position.x + span_radius + 1)
+        return Span(self.position.x - span_radius, self.position.x + span_radius + 1)
 
 
 class Solution:
@@ -43,68 +44,26 @@ class Solution:
         self.sensors = [Sensor.from_data(sensor_data) for sensor_data in sensor_datas]
         self.beacon_positions = set([sensor.closest_beacon_position for sensor in self.sensors])
 
-    @classmethod
-    def combine_ranges(cls, left_ranges: [range], right_ranges: [range]) -> [range]:
-        combined = []
-        for left_range in left_ranges:
-            has_been_combined = False
-            for right_index, right_range in list(enumerate(right_ranges))[::-1]:
-                if right_range.start <= left_range.start <= right_range.stop:
-                    left_range = (range(right_range.start, max(left_range.stop, right_range.stop)))
-                    right_ranges.pop(right_index)
-                    has_been_combined = True
-                    continue
-
-                if left_range.start <= right_range.start <= left_range.stop:
-                    left_range = (range(left_range.start, max(left_range.stop, right_range.stop)))
-                    right_ranges.pop(right_index)
-                    has_been_combined = True
-                    continue
-
-            if has_been_combined:
-                right_ranges.append(left_range)
-            else:
-                combined.append(left_range)
-        combined += right_ranges
-        return combined
-
-    @classmethod
-    def simplify_ranges(cls, ranges: [range]) -> [range]:
-        if len(ranges) == 1:
-            return ranges
-
-        midpoint = len(ranges) // 2
-        left_reduced = cls.simplify_ranges(ranges[:midpoint])
-        right_reduced = cls.simplify_ranges(ranges[midpoint:])
-
-        return cls.combine_ranges(left_reduced, right_reduced)
-
     def beacon_positions_on_row(self) -> [int]:
         return [position.x for position in filter(lambda position: position.y == self.considering_y_coordinate, self.beacon_positions)]
 
-    def positions_spanned_on_row(self) -> [range]:
+    def positions_spanned_on_row(self) -> SpanCollection:
         unsimplified_spans = []
         for sensor in self.sensors:
             try:
                 unsimplified_spans.append(sensor.span_at_y(self.considering_y_coordinate))
             except ValueError:
                 pass
-        simplified_spans = self.simplify_ranges(unsimplified_spans)
 
-        return simplified_spans
+        return SpanCollection(*unsimplified_spans)
 
     def positions_with_no_beacon_on_row(self) -> [int]:
         spans = self.positions_spanned_on_row()
         beacon_positions = self.beacon_positions_on_row()
 
-        beacons_in_spans = 0
-        for beacon_position in beacon_positions:
-            for span in spans:
-                if span.start <= beacon_position < span.stop:
-                    beacons_in_spans += 1
-                    break
+        beacons_in_span = [position in spans for position in beacon_positions].count(True)
 
-        return sum([span.stop - span.start for span in spans]) - beacons_in_spans
+        return sum([span.stop - span.start for span in spans._spans]) - beacons_in_span
 
 
 if __name__ == "__main__":
