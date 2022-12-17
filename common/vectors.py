@@ -5,6 +5,11 @@ Number = Union[int, float]
 
 
 class Vector2:
+    __slots__ = [
+        "x",
+        "y"
+    ]
+
     def __init__(self, x: Number, y: Number):
         self.x = x
         self.y = y
