@@ -1,6 +1,6 @@
 from urllib import request, parse
 
-address = "http://AE4A533373474DA6831EC406052E4FE02.asuscomm.com:8080"
+address = "http://192.168.1.12:8089"
 
 # dataRaw = [("v1", v1), ("y1", y1), ("v2", v2), ("y2", y2)]
 dataRaw = [("ab", ["abc", "def", "ghj"]), ("db", [123, 456, 789])]

@@ -5,6 +5,11 @@ Number = Union[int, float]
 
 
 class Vector2:
+    __slots__ = [
+        "x",
+        "y"
+    ]
+
     def __init__(self, x: Number, y: Number):
         self.x = x
         self.y = y
@@ -16,28 +21,18 @@ class Vector2:
     def __abs__(self) -> float:
         return sqrt(self.x**2 + self.y**2)
 
+    @property
+    def manhattan(self):
+        return abs(self.x) + abs(self.y)
+
     def __add__(self, other: Self) -> Self:
         if isinstance(other, Vector2):
             return Vector2(self.x + other.x, self.y + other.y)
         raise TypeError
 
-    def __iadd__(self, other) -> Self:
-        if isinstance(other, Vector2):
-            self.x += other.x
-            self.y += other.y
-            return self
-        raise TypeError
-
     def __sub__(self, other) -> Self:
         if isinstance(other, Vector2):
             return Vector2(self.x - other.x, self.y - other.y)
-        raise TypeError
-
-    def __isub__(self, other) -> Self:
-        if isinstance(other, Vector2):
-            self.x -= other.x
-            self.y -= other.y
-            return self
         raise TypeError
 
     @overload
@@ -53,26 +48,14 @@ class Vector2:
             return Vector2(self.x * other, self.y * other)
         raise TypeError
 
-    @overload
-    def __imul__(self, other: Self) -> Self: ...
+    def __hash__(self) -> int:
+        # https://stackoverflow.com/a/5929567/11045433
+        return (self.x * 73856093) ^ (self.y * 83492791)
 
-    @overload
-    def __imul__(self, other: Number) -> Self: ...
-
-    def __imul__(self, other: Self | Number) -> Self:
+    def __eq__(self, other) -> bool:
         if isinstance(other, Vector2):
-            self.x *= other.x
-            self.y *= other.y
-            return self
-        if isinstance(other, Number):
-            self.x *= other
-            self.y *= other
-            return self
-        raise TypeError
-
-    # def __hash__(self) -> int:
-    #     # https://stackoverflow.com/a/5929567/11045433
-    #     return (self.x * 73856093) ^ (self.y * 83492791)
+            return self.x == other.x and self.y == other.y
+        return False
 
     def __copy__(self) -> Self:
         return self.__class__(self.x, self.y)

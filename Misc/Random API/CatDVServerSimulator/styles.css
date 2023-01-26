@@ -1,0 +1,27 @@
+html,body
+{
+    height: 100%;
+}
+body
+{
+   display: table;
+   margin: 0 auto;
+}
+
+.container
+{
+    height: 100%;
+    width: 100%;
+    display: table-cell;
+    vertical-align: middle;
+    horiz-align: center;
+}
+.cent
+{
+    height:50px;
+	width:200px;
+    position:absolute;
+	left:50%;
+	top:50%;
+    margin: -25px auto auto -100px;
+}

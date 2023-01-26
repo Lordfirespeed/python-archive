@@ -1,0 +1,9 @@
+V1.0: Incoherent maze. Few text/input errors.
+V1.1: Incoherent maze.
+V1.5: Coherent maze.
+V1.7: Map - prints map at end of run. 
+V1.9: Commands - 'Go' for movement, 'Map'. Infastructure allows for other commands.
+V2.0: Infastructure caused movement glitch. Additional infastructure added - allows for 'precommands' to edit args, etc.
+	- Full 'Maze explorer' functionality with map is in working order.
+V2.5: PLANNED: Save function.
+V3.0: PLANNED: Encounters.
