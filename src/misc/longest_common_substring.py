@@ -1,6 +1,33 @@
+from dataclasses import dataclass
 import functools
 
 from common import colours
+
+
+@dataclass(frozen=True)
+class CommonSubstring:
+    content: str
+    of_first: str
+    of_second: str
+    first_index: slice
+    second_index: slice
+
+    def __post_init__(self):
+        assert self.content == self.of_first[self.first_index]
+        assert self.content == self.of_second[self.second_index]
+
+    def pretty_print(self):
+        left_pad_to_length: int = max(self.first_index.start, self.second_index.start)
+
+        highlighted_substring = f"{colours.pink}{self.content}{colours.reset}"
+        start_of_first = self.of_first[:self.first_index.start]
+        end_of_first = self.of_first[self.first_index.stop:]
+        start_of_second = self.of_second[:self.second_index.start]
+        end_of_second = self.of_second[self.second_index.stop:]
+
+        print(f"{start_of_first:>{left_pad_to_length}}{highlighted_substring}{end_of_first}")
+        print(f"{start_of_second:>{left_pad_to_length}}{highlighted_substring}{end_of_second}")
+        print(f"{'':>{left_pad_to_length}}{colours.pink}{'^' * len(self.content)}{colours.reset}")
 
 
 @functools.cache
@@ -16,6 +43,10 @@ def _longest_left_aligned_common_substring(a: str, b: str) -> str:
 
 @functools.cache
 def _longest_common_substring(a: str, b: str) -> (str, int, int):
+    """
+    :return tuple of `(best, best_a_start_index, best_b_start_index)`, where `best` is the longest common substring
+    and the indexes locate the substring in `a` and `b` (respectively).
+    """
     best: str = ""
     best_a_start_index: int = 0
     best_b_start_index: int = 0
@@ -44,20 +75,17 @@ def _longest_common_substring(a: str, b: str) -> (str, int, int):
     return best, best_a_start_index, best_b_start_index
 
 
-def longest_common_substring(a: str, b: str) -> (str, slice, slice):
+def longest_common_substring(a: str, b: str) -> CommonSubstring:
     best, best_a_start_index, best_b_start_index = _longest_common_substring(a, b)
     best_a_index = slice(best_a_start_index, best_a_start_index + len(best))
     best_b_index = slice(best_b_start_index, best_b_start_index + len(best))
-    return best, best_a_index, best_b_index
-
-
-def pretty_print_longest_common_substring(a: str, b: str, result: (str, slice, slice)):
-    substring, a_index, b_index = result
-
-    left_pad_to_length: int = max(a_index.start, b_index.start)
-    print(f"{a[:a_index.start]:>{left_pad_to_length}}{colours.pink}{a[a_index]}{colours.reset}{a[a_index.stop:]}")
-    print(f"{b[:b_index.start]:>{left_pad_to_length}}{colours.pink}{b[b_index]}{colours.reset}{b[b_index.stop:]}")
-    print(f"{colours.pink}{'':>{left_pad_to_length}}{'^' * len(substring)}{colours.reset}")
+    return CommonSubstring(
+        content=best,
+        of_first=a,
+        of_second=b,
+        first_index=best_a_index,
+        second_index=best_b_index,
+    )
 
 
 def main():
@@ -65,11 +93,7 @@ def main():
     my_password = "dethrone1earldom.colorings@HARPOON0insider"  # not a password I actually use for anything :)
 
     result = longest_common_substring(my_email, my_password)
-    substring, a_index, b_index = result
-    assert substring == my_email[a_index]
-    assert substring == my_password[b_index]
-
-    pretty_print_longest_common_substring(my_email, my_password, result)
+    result.pretty_print()
 
 
 if __name__ == "__main__":
