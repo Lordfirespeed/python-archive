@@ -14,21 +14,25 @@ class MontyHallGame:
         self.won_prize = None
 
     def simulate(self):
+        # there are three doors (labelled 1, 2, 3)
+        # the host places the prize behind a random door
         self.prize_door = randrange(1, 4)
+        # the player chooses the door they believe the prize is behind
         self.first_selected_door = randrange(1, 4)
 
+        # the host selects a door to open; they never choose the prize door or the player's chosen door
         revealable_doors = {1, 2, 3}
         revealable_doors.discard(self.prize_door)
         revealable_doors.discard(self.first_selected_door)
-
         self.revealed_door = choice(list(revealable_doors))
 
+        # the player chooses whether to 'switch' - change their choice of door
         pickable_doors = {1, 2, 3}
         pickable_doors.discard(self.revealed_door)
-
         self.final_selected_door = choice(list(pickable_doors))
         self.switched_selected_door = self.first_selected_door != self.final_selected_door
 
+        # the player wins the prize if it was behind their final choice of door
         self.won_prize = self.final_selected_door == self.prize_door
 
 
